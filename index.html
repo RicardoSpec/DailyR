@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mon cadre</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#f3f2ec;--card:#fff;--tx:#1d1d1b;--mut:#6b6a63;--acc:#1f6f5c;--hA:#1f6f5c;--hB:#3b9c85;--acc2:#e3f0ec;--bd:#e2e0d8;--warm:#e9a23b;--rose:#d9627a;--sky:#4a90c2}
+html{scroll-padding-top:env(safe-area-inset-top,0px);height:100%}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#151614;--card:#21231f;--tx:#eceae3;--mut:#9b9a92;--acc:#58b69e;--hA:#1d4a3f;--hB:#2b6b5b;--acc2:#233530;--bd:#33362f}}
+:root[data-theme="dark"]{color-scheme:dark;--bg:#151614;--card:#21231f;--tx:#eceae3;--mut:#9b9a92;--acc:#58b69e;--hA:#1d4a3f;--hB:#2b6b5b;--acc2:#233530;--bd:#33362f}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:660px;margin:0 auto;padding:14px 14px 48px}
+.hero{display:flex;align-items:center;gap:16px;padding:18px;border-radius:22px;color:#fff;background:linear-gradient(135deg,var(--hA),var(--hB));margin-bottom:12px}
+.hero h1{font-size:22px;margin:0 0 4px}.hero p{margin:0;opacity:.92;font-size:14px}
+.hero small{display:block;margin-top:6px;opacity:.85}
+nav{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+nav button{white-space:nowrap;padding:9px 13px;border:1px solid var(--bd);background:var(--card);color:var(--tx);border-radius:999px;font:inherit;font-size:14px;cursor:pointer}
+nav button.on{background:var(--acc);border-color:var(--acc);color:#fff}
+h2{font-size:13px;margin:20px 2px 8px;color:var(--mut);text-transform:uppercase;letter-spacing:.07em}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:12px 14px;margin-bottom:10px}
+.note{background:var(--acc2);border-radius:14px;padding:10px 14px;margin-bottom:12px;font-size:14px}
+.slots{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.slot{background:var(--acc2);border-radius:12px;padding:9px 10px;font-size:13px}
+.slot b{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--mut);margin-bottom:2px}
+.row{display:flex;gap:12px;align-items:center;width:100%;text-align:left;padding:12px 2px;border:0;border-bottom:1px solid var(--bd);background:none;color:inherit;font:inherit;cursor:pointer}
+.row:last-child{border-bottom:0}
+.box{flex:none;width:26px;height:26px;border-radius:8px;border:2px solid var(--mut);display:grid;place-items:center;font-size:15px;color:#fff}
+.row.on .box{background:var(--acc);border-color:var(--acc)}
+.row.on .t{color:var(--mut);text-decoration:line-through}
+.ico{font-size:20px;flex:none}
+.bar{height:9px;background:var(--bd);border-radius:6px;overflow:hidden;margin:6px 0}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--acc),var(--warm));border-radius:6px}
+.dots{display:flex;gap:8px;justify-content:space-between;margin-top:8px}
+.dot{flex:1;text-align:center;font-size:12px;color:var(--mut)}
+.dot span{display:block;height:30px;border-radius:10px;background:var(--bd);margin-bottom:3px}
+.dot.ok span{background:var(--acc)}.dot.tn span{outline:2px solid var(--warm)}
+.wk.today{border-color:var(--acc);box-shadow:0 0 0 1px var(--acc)}
+.wk>b{display:block;margin-bottom:6px}
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;text-align:center;font-size:13px}
+.cal b{color:var(--mut);font-size:11px}
+.cal .d{font-style:normal;padding:7px 0;border-radius:9px;border:1px solid var(--bd);background:color-mix(in srgb,var(--acc) calc(var(--a)*100%),var(--card))}
+.cal .d.tn{outline:2px solid var(--warm)}
+.cal .ev{box-shadow:inset 0 -4px 0 var(--rose)}.cal .e2{box-shadow:inset 0 -4px 0 var(--sky)}.cal .e3{box-shadow:inset 0 -4px 0 var(--warm)}
+.leg{font-size:12px;color:var(--mut);margin:4px 2px}
+.kd{display:flex;justify-content:space-between;gap:10px;padding:7px 0;font-size:15px;border-bottom:1px solid var(--bd)}
+.kd:last-child{border:0}.kd em{font-style:normal;color:var(--acc);font-weight:700;white-space:nowrap}
+.cnt{padding:8px 0;border-bottom:1px solid var(--bd)}.cnt:last-child{border:0}
+.cnt>div{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.cnt .b{display:flex;align-items:center;gap:10px}
+.cnt button{width:34px;height:34px;border-radius:10px;border:1px solid var(--bd);background:var(--card);color:var(--tx);font-size:18px;cursor:pointer}
+.cnt output{min-width:24px;text-align:center;font-weight:700}
+input[type=text],input[type=date],textarea{width:100%;box-sizing:border-box;padding:10px;border-radius:12px;border:1px solid var(--bd);background:var(--card);color:var(--tx);font:inherit;margin:4px 0 10px}
+label{font-size:14px;color:var(--mut)}
+table{width:100%;border-collapse:collapse;font-size:14px}td{padding:5px 0;border-bottom:1px solid var(--bd)}td:last-child{text-align:right}
+.card p{margin:4px 0;font-size:14px}
+</style>
+</head>
+<body>
+<main id="app"></main>
+<script>
+const DAYS=["Dimanche","Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi"];
+const MON=["Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre"];
+const DAILY=[["out","🚶","Dehors avant 14h (sport, marche ou sortie)"],["work","🏛️","Bloc de travail hors de chez moi (oral, candidatures)"],["eng","🇬🇧","Immersion anglais, 1 h minimum (écoute i+1, Anki)"],["read","📖","Lecture, 30 min"],["tidy","🧹","Rangement ou nettoyage, 20 min"]];
+const WEEK={1:["Salle 9h30","Médiathèque 12h–16h","Anglais"],2:["Salle 9h30","Médiathèque 12h–16h","Lecture"],3:["Médiathèque dès 10h","Escalade","Anglais"],4:["Salle 9h30","Médiathèque 12h–16h","Tri des appareils"],5:["Piscine","Médiathèque 12h–16h","Créneau social (jour déplaçable)"],6:["Escapade vélo + train, départ avant 11h","Sur place, balade","Repos"],0:["Marche ou vélo local","Tri de l’appart","Off, sans culpabiliser"]};
+const CNT=[["clim","🧗","Entrées d’escalade restantes",5],["pool","🏊","Entrées de piscine restantes",0],["gym","🏋️","Séances de salle",0]];
+const TRIPS=[["t1","Clisson"],["t2","Pornic"],["t3","Le Croisic"],["t4","Le Mans, chez ta mère (repérage)"],["t5","Autre destination à choisir"]];
+const EC=[['c','📚','Cours et grammaire',40],['l','🎧','Écoute i+1 (immersion)',30],['s','🗣️','Parler (forcé)',20],['r','✍️','Lecture et écriture',10]];
+const GROUPS=[["🏠 Appart",[["p1","Vider et jeter : vêtements, papiers, objets inutiles"],["p2","Trier : garder, donner, emmener au Mans"],["p3","Ménage complet (cuisine, salle de bain, sols)"],["p4","Décider ce que j’emporte à l’étranger"]]],["💻 Appareils",[["d1","Stockage ordinateur : téléchargements, doublons"],["d2","Stockage téléphone : photos, vidéos, caches"],["d3","Mails : désabonnements, archivage"],["d4","Favoris : trier et ranger"],["d5","Apps inutilisées : désinstaller"],["d6","Sauvegarder les fichiers importants"]]],["🚆 Le Mans",[["m1","Aller-retour de repérage (train, un sac)"],["m2","Estimer le volume restant"],["m3","Décider : train + sacs, covoiturage ou utilitaire (devis)"]]]];
+const TABS=[["today","Aujourd’hui"],["week","Semaine"],["goals","Objectifs"],["eng","Anglais"],["home","Appart"],["info","Infos"]];
+let S={done:{},cnt:{},chk:{},win:{},em:{},soc:"",oral:"",book:"",cpf:""},tab="today",ref=null,tm,ed="";
+const pad=n=>String(n).padStart(2,"0");
+const iso=d=>d.getFullYear()+"-"+pad(d.getMonth()+1)+"-"+pad(d.getDate());
+const esc=s=>String(s||"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const t0=()=>{const n=new Date();return new Date(n.getFullYear(),n.getMonth(),n.getDate())};
+const left=d=>Math.round((new Date(d+"T00:00")-t0())/864e5);
+const cv=(k,d)=>S.cnt[k]===undefined?d:S.cnt[k];
+const cntDay=k=>Object.values(S.done[k]||{}).filter(Boolean).length;
+const bar=p=>`<div class="bar"><i style="width:${Math.round(Math.max(0,Math.min(1,p))*100)}%"></i></div>`;
+const ring=(p,l)=>`<svg width="76" height="76" viewBox="0 0 72 72" style="flex:none"><circle cx="36" cy="36" r="30" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="8"/><circle cx="36" cy="36" r="30" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round" stroke-dasharray="${(188.5*p).toFixed(1)} 188.5" transform="rotate(-90 36 36)"/><text x="36" y="42" text-anchor="middle" fill="#fff" font-size="17" font-weight="700">${l}</text></svg>`;
+const slots=a=>`<div class="slots">${["Matin","Après-midi","Soir"].map((s,i)=>`<div class="slot"><b>${s}</b>${a[i]}</div>`).join("")}</div>`;
+function save(){clearTimeout(tm);tm=setTimeout(async()=>{const d=JSON.parse(JSON.stringify(S));if(ref){try{await ref.set(d)}catch(e){}}else{try{localStorage.setItem("cadre",JSON.stringify(d))}catch(e){}}},500)}
+function month(y,m,today,EV){
+ const off=(new Date(y,m,1).getDay()+6)%7,nd=new Date(y,m+1,0).getDate();
+ let c=["L","M","M","J","V","S","D"].map(d=>`<b>${d}</b>`).join("");
+ for(let i=0;i<off;i++)c+="<span></span>";
+ for(let d=1;d<=nd;d++){const k=y+"-"+pad(m+1)+"-"+pad(d),ev=EV.find(e=>k>=e[0]&&k<=e[1]);c+=`<i class="d ${k===today?"tn":""} ${ev?ev[3]:""}" style="--a:${cntDay(k)/5}" title="${ev?ev[2]:""}">${d}</i>`}
+ return `<h2>${MON[m]} ${y}</h2><div class="cal">${c}</div>`;
+}
+function render(){
+ const T=t0(),today=iso(T),dd=S.done[today]||{},n=cntDay(today),wd=T.getDay();
+ const mon=new Date(T);mon.setDate(T.getDate()-((wd+6)%7));
+ const wkDays=[0,1,2,3,4,5,6].map(i=>{const d=new Date(mon);d.setDate(mon.getDate()+i);return d});
+ const okDays=wkDays.filter(d=>cntDay(iso(d))>=3).length;
+ const msg=n===0?"Une sortie dehors avant 14h, et c’est lancé.":n<3?"C’est parti, continue.":"Journée validée, bravo.";
+ let h=`<div class="hero">${ring(n/5,n+"/5")}<div><h1>${DAYS[wd]} ${T.getDate()} ${MON[T.getMonth()].toLowerCase()}</h1><p>${msg}</p><small>${okDays}/7 jours validés cette semaine</small></div></div>`;
+ h+="<nav>"+TABS.map(([k,l])=>`<button data-tab="${k}" class="${tab===k?"on":""}">${l}</button>`).join("")+"</nav>";
+ if(tab==="today"){
+  if(left('2026-12-11')<=0){const A=[['a1','Consulter le résultat du DSCG'],['a2','Calculer mes exemptions sur le site ACCA'],['a3','Envoyer le diplôme et ouvrir mon compte ACCA'],['a4','Régler les frais d’exemption et d’inscription'],['a5','Choisir le premier papier et la session d’examen']];h+=`<h2>📌 Rappel : étapes ACCA</h2><div class='card'>${A.map(x=>`<button class='row ${S.chk[x[0]]?'on':''}' data-k='${x[0]}'><span class='box'>${S.chk[x[0]]?'✓':''}</span><span class='t'>${x[1]}</span></button>`).join('')}</div>`}
+  h+=`<p class='leg'>Touche une ligne pour la cocher. Autres onglets : Semaine (planning, calendrier), Objectifs, Anglais (note ton temps avec +15), Appart, Infos.</p>`;h+=`<h2>Au programme</h2><div class="card">${slots(WEEK[wd])}</div>`;
+  h+=`<h2>Mes 5 ancrages</h2><div class="card">${DAILY.map(([k,i,l])=>`<button class="row ${dd[k]?"on":""}" data-d="${k}"><span class="box">${dd[k]?"✓":""}</span><span class="ico">${i}</span><span class="t">${l}</span></button>`).join("")}</div>`;
+  h+=`<h2>Une chose dont je suis content aujourd’hui</h2><input type="text" data-w="1" value="${esc((S.win||{})[today])}" placeholder="Même petite">`;
+  h+=`<h2>Ma semaine</h2><div class="card"><div class="dots">${wkDays.map(d=>`<div class="dot ${cntDay(iso(d))>=3?"ok":""} ${iso(d)===today?"tn":""}"><span></span>${DAYS[d.getDay()].slice(0,1)}</div>`).join("")}</div></div>`;
+ }
+ if(tab==="week"){const sw='s'+iso(wkDays[0]);h+=`<div class='card'><b>Créneau social de la semaine</b><p>Déplaçable, mais à fixer d’ici mercredi et jamais supprimé.</p><input type='text' data-f='soc' value="${esc(S.soc)}" placeholder='Quel jour, avec qui ou quelle activité'><button class='row ${S.chk[sw]?'on':''}' data-k='${sw}'><span class='box'>${S.chk[sw]?'✓':''}</span><span class='t'>Fait cette semaine</span></button></div>`;
+  h+=[1,2,3,4,5,6,0].map(i=>`<div class="card wk ${i===wd?"today":""}"><b>${DAYS[i]}</b>${slots(WEEK[i])}</div>`).join("");
+  const EV=[["2026-12-11","2026-12-11","Résultat DSCG","ev"],["2026-11-02","2026-11-02","Prévu à Nantes","ev"],["2026-12-01","2026-12-04","Visite de ta sœur","e2"],["2026-12-09","2026-12-12","Impératif","e3"]];
+  if(S.oral)EV.push([S.oral,S.oral,"Oral du master","ev"]);
+  h+=month(2026,10,today,EV)+month(2026,11,today,EV)+`<p class="leg">Plus la case est verte, plus tu as coché d’ancrages. Rose : 2 nov et oral · bleu : ta sœur · orange : impératif.</p>`;
+ }
+ if(tab==="goals"){
+  const K=[["2026-11-02","2 nov : prévu à Nantes"],["2026-12-11","11 déc : résultat du DSCG, dérouler les étapes ACCA"],["2026-12-01","1er déc : fin de l’abonnement salle, ta sœur arrive (jusqu’au 4)"],["2026-12-09","9–12 déc : impératif"],["2027-01-01","Début 2027 : départ visé"]];
+  if(S.oral)K.push([S.oral,"Oral du master"]);
+  K.sort((a,b)=>a[0]<b[0]?-1:1);
+  const wl=Math.max(0,Math.ceil(left("2026-12-01")/7)),gt=wl*3;
+  const eng=Object.values(S.done).filter(d=>d.eng).length,rd=Object.values(S.done).filter(d=>d.read).length;
+  const trips=TRIPS.filter(([k])=>S.chk[k]).length;
+  h+=`<h2>Échéances</h2><div class="card">${K.filter(([d])=>left(d)>=0).map(([d,l])=>`<div class="kd"><span>${l}</span><em>${left(d)===0?"aujourd’hui":"J-"+left(d)}</em></div>`).join("")}</div>`;
+  h+=`<label>Date de l’oral (dès que tu l’as)</label><input type="date" data-f="oral" value="${esc(S.oral)}">`;
+  h+=`<h2>Sport</h2><div class="card">${CNT.map(([k,i,l,d])=>{const v=cv(k,d);let p="";if(k==="clim")p=bar((5-v)/5);if(k==="gym")p=gt?bar(v/gt)+`<span class="leg">Objectif : ${gt} séances d’ici le 1er déc (3 par semaine)</span>`:"";return `<div class="cnt"><div><span>${i} ${l}</span><span class="b"><button data-c="${k}" data-s="-1">−</button><output>${v}</output><button data-c="${k}" data-s="1">+</button></span></div>${p}</div>`}).join("")}</div>`;
+  h+=`<h2>Escapades vélo + train · ${trips}/${TRIPS.length}</h2><div class="card">${TRIPS.map(([k,l])=>`<button class="row ${S.chk[k]?"on":""}" data-k="${k}"><span class="box">${S.chk[k]?"✓":""}</span><span class="t">${l}</span></button>`).join("")}</div>`;
+  h+=`<h2>Anglais et lecture</h2><div class="card"><div class="kd"><span>🇬🇧 Séances d’anglais cochées</span><em>${eng}</em></div><div class="kd"><span>📖 Séances de lecture cochées</span><em>${rd}</em></div></div>`;
+  h+=`<label>Livre du moment</label><input type="text" data-f="book" value="${esc(S.book)}"><label>Formation d’anglais CPF envisagée</label><input type="text" data-f="cpf" value="${esc(S.cpf)}">`;
+ }
+ if(tab==='eng'){const em=S.em||{},wk=wkDays.map(iso),wid=iso(wkDays[0]),fmt=m=>Math.floor(m/60)+'h'+pad(m%60),tot=EC.map(x=>wk.reduce((a,k)=>a+((em[k]||{})[x[0]]||0),0)),T2=tot.reduce((a,b)=>a+b,0),td=em[ed||today]||{},tdm=EC.reduce((a,x)=>a+(td[x[0]]||0),0);
+  h+=`<div class='card'><b>Cette semaine : ${fmt(T2)}</b> · minimum 7h (1 h par jour), idéal 14h${bar(T2/420)}<span class='leg'>Jour choisi : ${fmt(tdm)} (vide = aujourd’hui)</span><br><label>Noter sur un autre jour</label><input type='date' data-f='ed' value="${ed}" max="${today}"></div>`;
+  h+=`<h2>Répartition du temps</h2><div class='card'>${EC.map((x,j)=>`<div class='cnt'><div><span>${x[1]} ${x[2]}</span><span class='b'><button data-m='${x[0]}:-15'>−</button><output>${T2?Math.round(tot[j]/T2*100):0}%</output><button data-m='${x[0]}:15'>+15</button></span></div>${bar(T2?tot[j]/T2:0)}<span class='leg'>Cible ${x[3]} % · ${fmt(tot[j])} cette semaine · les boutons ajustent le jour choisi</span></div>`).join('')}</div>`;
+  const WK=[['w'+wid+'a','Texte de 200 mots écrit'],['w'+wid+'b','Texte corrigé par l’IA, erreurs comprises'],['w'+wid+'c','Vocal enregistré en parlant avec l’IA'],['ev1','Évaluation de niveau faite avec Claude']];
+  h+=`<h2>Cette semaine</h2><div class='card'>${WK.map(x=>`<button class='row ${S.chk[x[0]]?'on':''}' data-k='${x[0]}'><span class='box'>${S.chk[x[0]]?'✓':''}</span><span class='t'>${x[1]}</span></button>`).join('')}</div>`;
+  h+=`<h2>Mes 3 clés</h2><div class='card'><p><b>1. Écoute i+1</b> : des supports où je connais environ 5 mots sur 6, un cran au-dessus de mon niveau. 1 à 2 h par jour, en immersion, tous les jours.</p><p><b>2. Anki</b> : jamais un mot seul, toujours dans une phrase. Cartes créées sur Mac (gratuit), révisées sur iPhone avec AnkiMobile (achat unique) pour éviter l’ordi.</p><p><b>3. Parler</b> : d’abord comprendre les réponses et les accents. Puis un texte de 200 mots par semaine corrigé par l’IA, puis des vocaux à voix haute.</p></div><p class='leg'>Idée : fais l’écoute pendant les marches, le vélo et le ménage, pas devant l’ordinateur.</p>`}
+ if(tab==="home"){
+  let a=0,b=0;GROUPS.forEach(([g,L])=>{b+=L.length;a+=L.filter(([k])=>S.chk[k]).length});
+  h+=`<div class="card"><b>Avancement global : ${a}/${b}</b>${bar(a/b)}</div>`;
+  h+=GROUPS.map(([g,L])=>{const c=L.filter(([k])=>S.chk[k]).length;return `<h2>${g} · ${c}/${L.length}</h2><div class="card">${bar(c/L.length)}${L.map(([k,l])=>`<button class="row ${S.chk[k]?"on":""}" data-k="${k}"><span class="box">${S.chk[k]?"✓":""}</span><span class="t">${l}</span></button>`).join("")}</div>`}).join("");
+ }
+ if(tab==="info"){
+  h+=`<h2>Médiathèque Jacques Demy</h2><div class="card"><p>24 quai de la Fosse · tram ligne 1, arrêt Médiathèque</p><table><tr><td>Lun, mar, jeu, ven</td><td>12h–19h</td></tr><tr><td>Mercredi</td><td>10h–19h</td></tr><tr><td>Samedi</td><td>10h–18h</td></tr><tr><td>Dimanche et jours fériés</td><td>Fermé</td></tr></table><p class="leg">Relevé en octobre 2026, à revérifier avant d’y aller.</p></div>`;
+  h+=`<h2>Vélo dans le TER</h2><div class="card"><p>Hors 1er mai–27 septembre, l’emport est en principe gratuit et sans réservation, dans la limite des places. Deux lignes exigent la réservation toute l’année : vérifie sur ter.sncf.com.</p><p>Décide la veille selon la météo, avec un plan B dehors avant 14h.</p></div>`;
+  h+=`<h2>CPF anglais</h2><div class="card"><p>Seul le TOEIC 4-Skills est éligible. Participation obligatoire : 150 € aujourd’hui, exonération des demandeurs d’emploi et des cofinancements.</p><p>Le PLF 2027 (article 89, pas encore voté) prévoit une majoration pour les formations non prioritaires et restreint l’exonération des demandeurs d’emploi. Compare avec le prix du test seul avant de valider.</p></div>`;
+  h+=`<h2>Le Mans</h2><div class="card"><p>Repérage en train d’abord. Pour un utilitaire : environ 190 km par trajet, donc souvent au-delà des 100 km inclus. Demande deux devis avec tes vraies dates.</p></div>`;
+ }
+ document.getElementById("app").innerHTML=h;
+}
+document.addEventListener("click",e=>{
+ const el=e.target.closest("[data-tab],[data-d],[data-c],[data-k],[data-m]");if(!el)return;
+ if(el.dataset.tab){tab=el.dataset.tab;render();return}
+ if(el.dataset.d){const t=iso(t0());S.done[t]=S.done[t]||{};S.done[t][el.dataset.d]=!S.done[t][el.dataset.d]}
+ if(el.dataset.k){S.chk[el.dataset.k]=!S.chk[el.dataset.k]}
+ if(el.dataset.m){const q=el.dataset.m.split(':'),t=ed||iso(t0());S.em=S.em||{};S.em[t]=S.em[t]||{};S.em[t][q[0]]=Math.max(0,(S.em[t][q[0]]||0)+Number(q[1]))}
+ if(el.dataset.c){const k=el.dataset.c,d=(CNT.find(x=>x[0]===k)||[0,0,0,0])[3];S.cnt[k]=Math.max(0,cv(k,d)+Number(el.dataset.s))}
+ save();render();
+});
+document.addEventListener("change",e=>{const f=e.target.dataset.f;if(!f)return;if(f==='ed'){ed=e.target.value;render();return}S[f]=e.target.value;save();if(f==="oral")render()});
+document.addEventListener("input",e=>{if(e.target.dataset.w){S.win=S.win||{};S.win[iso(t0())]=e.target.value;save()}});
+async function init(){
+ render();
+ try{
+  if(typeof claude!=="undefined"){
+   const db=await claude.use("db"),user=await claude.use("user");
+   if(db&&user){const id=await user.id();ref=db.collection("data/users/"+id).doc("tracker");const s=await ref.get();if(s.exists)Object.assign(S,JSON.parse(JSON.stringify(s.data())))}
+  }
+ }catch(e){ref=null}
+ if(!ref){try{const t=localStorage.getItem("cadre");if(t)Object.assign(S,JSON.parse(t))}catch(e){}}
+ render();
+}
+init();
+</script>
+</body>
+</html>
